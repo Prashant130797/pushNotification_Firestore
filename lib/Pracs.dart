@@ -27,10 +27,40 @@ class Pracs {
     }
     return series;
   }
+
+  static int factorial(int n) {
+    int result = 1;
+    for (int i = 1; i <= n; i++) {
+      result *= i;
+    }
+    return result;
+  }
+
+  static int sumOfDigits(int num) {
+    int sum = 0;
+    while (num > 0) {
+      sum += num % 10;
+      num ~/= 10; // integer division
+    }
+    return sum;
+  }
+
+  static int findLargest(List<int> numbers) {
+    int largest = numbers[0];
+
+    for (var number in numbers) {
+      if (number > largest) {
+        largest = number;
+      }
+    }
+    return largest;
+  }
 }
 
 void main() {
   var getMain = Pracs.reverseString("Prashu");
   var getBool = Pracs.palindrom("level");
-  var getEvenOdd = print('The getMain ${getMain} ${getBool}');
+  // var getEvenOdd =
+  var getFactorial = Pracs.factorial(45);
+  print('The getMain ${getFactorial} ${getBool}');
 }
