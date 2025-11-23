@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart' show FirebaseFirestore;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:push_main_notification/Firestore/UserModel.dart';
+import 'package:push_main_notification/Firestore/initilizeFireStore.dart';
 
 class ShowUI extends StatelessWidget {
   const ShowUI({super.key});
@@ -31,6 +32,22 @@ class ShowUI extends StatelessWidget {
                       return ListTile(
                         title: Text(user.name),
                         subtitle: Text("Age: ${user.age}"),
+                        trailing: GestureDetector(
+                          onTap: () {
+                            FirestoreService().validationForm(user.name, 45);
+                          },
+                          child: Icon(Icons.price_change),
+                        ),
+                        leading: GestureDetector(
+                          onTap: () {
+                            FirestoreService().updateUserByNameSingleVlaue(
+                              "${user.name}",
+                              "Age",
+                              69,
+                            );
+                          },
+                          child: Icon(Icons.update),
+                        ),
                       );
                     },
                   );
